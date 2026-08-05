@@ -55,4 +55,4 @@ Join our community of developers creating universal apps.
 
 1. npx expo start
 2. npm run reset-project  and no 
-3.
+3. npm install bable-present-expo@~54.0.10
