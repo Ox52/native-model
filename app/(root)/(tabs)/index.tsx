@@ -9,6 +9,21 @@ export default function HomeScreen() {
         title="Open Notifications"
         onPress={() => router.push("/notifications")}
       />
+
+      <Button
+
+        title="open property 1"
+        onPress={() => router.push({
+
+          pathname: "/property/[id]",
+          params: {
+id:1
+          }
+
+        })}
+
+
+      />
     </SafeAreaView>
   );
 }
