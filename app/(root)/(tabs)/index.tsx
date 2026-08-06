@@ -1,12 +1,11 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, FlatList, Image, Pressable,Text, TextInput, View } from "react-native";
 import { router } from "expo-router";
+import { properties } from "@/data/properties";
+import PropertyCard from "@/components/PropertyCard";
 
-const properties =[
-  { id: "1", title: "moedern  vila", city: "Mumbai", price: "1.2cre" },
-  { id: "2", title: "moedern  dacnce", city: "Pune", price: "2cre" },
-  {id:"3",title:"moedern  catsle", city:"nashik",price:"1.4cre"},
-]
+
+
 
 
 export default function HomeScreen() {
@@ -64,12 +63,7 @@ id:1
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
 
-          <View  className="p-4 border-b border-gray-300">
-
-            <Text>{ item.title}</Text>
-            <Text>{ item.id}</Text>
-            <Text>{item.price}</Text>
-          </View>
+<PropertyCard property={item} />
         )}
 
 
