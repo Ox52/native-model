@@ -1,10 +1,17 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Button } from "react-native";
+import { Button, FlatList, Image, Pressable,Text, TextInput, View } from "react-native";
 import { router } from "expo-router";
+
+const properties =[
+  { id: "1", title: "moedern  vila", city: "Mumbai", price: "1.2cre" },
+  { id: "2", title: "moedern  dacnce", city: "Pune", price: "2cre" },
+  {id:"3",title:"moedern  catsle", city:"nashik",price:"1.4cre"},
+]
+
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView className="flex-1 justify-center items-center">
+    <SafeAreaView className="flex-1 p-4 bg-white">
       <Button
         title="Open Notifications"
         onPress={() => router.push("/notifications")}
@@ -24,6 +31,52 @@ id:1
 
 
       />
+
+
+      <Pressable className="bg-blue-500 p-4 rounded-xl">
+
+        <Text className="text-black font-bold">
+
+          login
+        </Text>
+
+
+      </Pressable>
+
+      <Image
+
+        source={{
+          uri:"https://cdn.pixabay.com/photo/2015/11/17/13/13/puppy-1047521_1280.jpg"
+        }}
+        className="w-48 h-48 rounded-xl"
+      />
+
+      <TextInput
+        placeholder="Searching..."
+        className="border rounded-lg p-3"
+
+
+
+      />
+
+      <FlatList
+        data={properties}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+
+          <View  className="p-4 border-b border-gray-300">
+
+            <Text>{ item.title}</Text>
+            <Text>{ item.id}</Text>
+            <Text>{item.price}</Text>
+          </View>
+        )}
+
+
+
+      />
+
+
     </SafeAreaView>
   );
 }

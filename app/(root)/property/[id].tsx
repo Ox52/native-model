@@ -1,6 +1,7 @@
 import { useLocalSearchParams } from "expo-router/build/hooks";
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Pressable } from "react-native";
 
 
 
@@ -15,7 +16,12 @@ export default function PopertyDeatils() {
       <Text className="text-3xl font-bold">
 
         Property Id :{id}
-</Text>
+
+
+      </Text>
+
+
+
 
 
     </SafeAreaView>
