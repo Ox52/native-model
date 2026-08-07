@@ -42,7 +42,14 @@ id:property.id
 
         <Text className="text-lg font-semibold text-green-600 mt-1">
                  {property.price}
-               </Text>
+        </Text>
+
+        <Text className="text-gray-500">
+                 {property.rating}
+        </Text>
+        <Text className="text-gray-500">
+                 {property.description}
+        </Text>
 
 
 
