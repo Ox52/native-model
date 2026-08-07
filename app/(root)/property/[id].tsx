@@ -1,29 +1,110 @@
-import { useLocalSearchParams } from "expo-router/build/hooks";
-import { Text } from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Pressable } from "react-native";
+import { Pressable, ScrollView } from "react-native";
+import { properties } from "@/data/properties";
+import { Image } from "react-native";
+import { useState } from "react";
+
 
 
 
 export default function PopertyDeatils() {
 
-  const { id } = useLocalSearchParams()
+  const [booked, setBooked] = useState(false);
+
+  // const { id } = useLocalSearchParams()
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const property = properties.find((item) => item.id === id);
+
+
+
+  if (!property) {
+
+    return (
+      <SafeAreaView className="flex-1 justify-center items-center">
+
+
+
+
+        <Text>
+
+Property not found
+</Text>
+
+
+      </SafeAreaView>
+    )
+  }
+
+
 
   return (
 
+
+
     <SafeAreaView>
 
-      <Text className="text-3xl font-bold">
-
-        Property Id :{id}
-
-
-      </Text>
+      <ScrollView>
 
 
 
 
 
+
+
+        <Image
+          source={{ uri: property.image }}
+          className="w-full h-72"
+          resizeMode="cover"
+        />
+
+        <View className="p-5">
+
+      <Text className="text-3xl font-bold">{property.title}</Text>
+
+        <Text className="text-2xl font-bold text-green-600 mt-4">{property.price}</Text>
+        <Text className="text-xl font-bold mt-6">
+            Description
+        </Text>
+
+
+        <Text className="text-gray-600 mt-2 leading-6">{property.description}</Text>
+
+
+        <View className="flex-row justify-between mt-3">
+          <Text>{property.rating}</Text>
+           <Text>{property.city}</Text>
+        </View>
+
+
+
+          <Pressable
+            disabled={booked}
+
+
+            className={`rounded-xl py-4 mt-8 ${booked ? "bg-green-400" : "bg-blue-500"}`}
+            onPress={()=> setBooked(true)}
+
+          >
+            <Text className="text-white text-center text-lg font-bold">
+
+
+{booked? "Visited Booked" : "Book Visit"}
+
+
+          </Text>
+
+
+          </Pressable>
+
+
+        </View>
+
+
+
+
+      </ScrollView>
     </SafeAreaView>
 
 
