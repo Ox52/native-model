@@ -4,5 +4,7 @@ export interface Property {
   title: string,
   city: string,
   price: string,
-image:string
+  image: string,
+  description: string,
+  rating: number
 }
