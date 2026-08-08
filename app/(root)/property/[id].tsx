@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Pressable, ScrollView } from "react-native";
 import { properties } from "@/data/properties";
@@ -82,9 +82,40 @@ Property not found
           <Pressable
             disabled={booked}
 
+            onPress{() => {
+
+              Alert.alert(
+
+                "book Visit",
+                "do you want to book a visit",
+                [
+                  {
+                    text: "Cancel"
+
+                  },
+                  {
+                    text: "Confirm",
+                    onPress: () => {
+
+                      setBooked(true)
+                    },
+
+
+
+                  }
+
+                ]
+
+
+              )
+
+
+            }
+            }
+
 
             className={`rounded-xl py-4 mt-8 ${booked ? "bg-green-400" : "bg-blue-500"}`}
-            onPress={()=> setBooked(true)}
+
 
           >
             <Text className="text-white text-center text-lg font-bold">
