@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Alert, Text, View } from "react-native";
+import { Alert, Modal, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Pressable, ScrollView } from "react-native";
 import { properties } from "@/data/properties";
@@ -12,6 +12,7 @@ import { useState } from "react";
 export default function PopertyDeatils() {
 
   const [booked, setBooked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // const { id } = useLocalSearchParams()
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -44,6 +45,72 @@ Property not found
 
 
     <SafeAreaView>
+
+
+      <Modal
+        visible={showModal}
+        transparent
+        animationType="slide"
+
+
+
+
+
+
+      >
+
+        <View className="flex-1 justify-end bg-black/50">
+          <View className="bg-white rounded-t-3xl p-6">
+
+            <Text className="text-2xl font-bold">
+                  Book a Visit
+            </Text>
+
+
+            <Text className="text-gray-500 mt-2">
+
+                Would you like to book a visit for this property?
+            </Text>
+
+            <Pressable className="bg-blue-500 rounded-xl py-4 mt-6"
+onPress={()=>{
+
+  setBooked(true)
+  setShowModal(false)
+}}
+
+
+            >
+
+
+
+              <Text className="text-white text-center font-bold">
+                      Confirm Booking
+                    </Text>
+
+
+
+
+            </Pressable>
+
+            <Pressable
+              className="py-4 mt-2"
+              onPress={() => setShowModal(false)}
+            >
+              <Text className="text-center font-bold">
+                Cancel
+              </Text>
+            </Pressable>
+
+
+
+
+</View>
+
+</View>
+
+
+      </Modal>
 
       <ScrollView>
 
@@ -81,37 +148,38 @@ Property not found
 
           <Pressable
             disabled={booked}
+              onPress={() => setShowModal(true)}
 
-            onPress{() => {
+            // onPress{() => {
 
-              Alert.alert(
+            //   Alert.alert(
 
-                "book Visit",
-                "do you want to book a visit",
-                [
-                  {
-                    text: "Cancel"
+            //     "book Visit",
+            //     "do you want to book a visit",
+            //     [
+            //       {
+            //         text: "Cancel"
 
-                  },
-                  {
-                    text: "Confirm",
-                    onPress: () => {
+            //       },
+            //       {
+            //         text: "Confirm",
+            //         onPress: () => {
 
-                      setBooked(true)
-                    },
-
-
-
-                  }
-
-                ]
+            //           setBooked(true)
+            //         },
 
 
-              )
+
+            //       }
+
+            //     ]
 
 
-            }
-            }
+            //   )
+
+
+            // }
+            // }
 
 
             className={`rounded-xl py-4 mt-8 ${booked ? "bg-green-400" : "bg-blue-500"}`}
