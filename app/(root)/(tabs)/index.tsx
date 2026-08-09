@@ -4,6 +4,7 @@ import { router } from "expo-router";
 import { properties } from "@/data/properties";
 import PropertyCard from "@/components/PropertyCard";
 import { useEffect, useState } from "react";
+import {  RefreshControl } from "react-native";
 
 
 
@@ -14,6 +15,17 @@ import { useEffect, useState } from "react";
 
 export default function HomeScreen() {
   const [search, setSearch] = useState("")
+  const [refreshing, setRefreshing] = useState(false);
+
+  function handelRefresh =() => {
+
+    setRefreshing(true)
+
+    setTimeout(() => {
+
+      setRefreshing(false)
+    },2000)
+  }
 
   useEffect(() => {
 
@@ -94,6 +106,14 @@ id:1
         )}
 
 
+          refreshControl={
+
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handelRefresh()}
+
+            />
+        }
 
       />
 
