@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Alert, Modal, Text, View } from "react-native";
+import { Alert, Linking, Modal, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Pressable, ScrollView } from "react-native";
 import { properties } from "@/data/properties";
@@ -140,7 +140,21 @@ onPress={()=>{
 
 
         <View className="flex-row justify-between mt-3">
-          <Text>{property.rating}</Text>
+            <Text>{property.rating}</Text>
+
+            {/*<Pressable
+
+              onPress={() =>   (Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${property.city}`)
+              className="bg-green-500 rounded-xl py-4 mt-4")
+
+              }
+            >*/}
+              <Text className="text-white text-center font-bold">
+                 📍 View Location
+               </Text>
+
+
+            {/*</Pressable>*/}
            <Text>{property.city}</Text>
         </View>
 
