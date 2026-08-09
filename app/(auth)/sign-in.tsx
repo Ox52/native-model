@@ -8,9 +8,26 @@ import {
   Text,
   TextInput,
   View,
+
 } from "react-native";
-export default function SignIn() {
+import AsyncStorage from "@react-native-async-storage/async-storage";
+export default  function SignIn() {
+  const saveUsername = async () => {
+    await AsyncStorage.setItem("username", "Harsh");
+    console.log("Username saved");
+  };
+
+  const getUsername = async () => {
+    const username = await AsyncStorage.getItem("username");
+    console.log(username);
+  };
+
+  const removeUsername = async () => {
+    await AsyncStorage.removeItem("username");
+    console.log("Username removed");
+  };
   return (
+
 
 
     <KeyboardAvoidingView
@@ -30,12 +47,12 @@ Login
 
         <TextInput
           placeholder="Email"
-          className="border rounde-xl p-4 mt-6"
+          className="border rounded-xl p-4 mt-6"
         />
         <TextInput
           placeholder="Password"
           secureTextEntry
-          className="border rounde-xl p-4 mt-6"
+          className="border rounded-xl p-4 mt-6"
         />
 
 
